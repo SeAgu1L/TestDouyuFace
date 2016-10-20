@@ -38,8 +38,8 @@ public class RvAdapter extends RecyclerView.Adapter<RvAdapter.IDyViewHolder> {
     @Override
     public void onBindViewHolder(IDyViewHolder holder, int position) {
         SimpleDraweeView mTestSDV = holder.mSDV;
-        String imageUrl = roomBeanList.get(position).getRoomSrc();
-        mTestSDV.setImageURI(Uri.parse(imageUrl));
+        mTestSDV.setImageURI(Uri.parse(roomBeanList.get(position).getAvatarMid()));
+
     }
 
     @Override
