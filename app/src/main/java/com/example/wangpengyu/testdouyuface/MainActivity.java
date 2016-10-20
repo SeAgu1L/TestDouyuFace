@@ -75,16 +75,17 @@ public class MainActivity extends AppCompatActivity {
                 .observeOn(AndroidSchedulers.mainThread()) // 设置观察者运行线程
                 .subscribe( // 设置观察者
                         new Subscriber<DouyuBean>() {
+                            // 监听完成
                             @Override
                             public void onCompleted() {
 
                             }
-
+                            // 发生异常
                             @Override
                             public void onError(Throwable e) {
 
                             }
-
+                            // 接收
                             @Override
                             public void onNext(DouyuBean douyuBean) {
                                 List<RoomBean> roomBeens = douyuBean.getData();

@@ -3,10 +3,12 @@ package com.example.wangpengyu.testdouyuface.http;
 import com.example.wangpengyu.testdouyuface.baen.DouyuBean;
 import com.example.wangpengyu.testdouyuface.config.DouyuConfig;
 
+import java.io.IOException;
 import java.util.HashMap;
 
 import retrofit2.Call;
 import retrofit2.Callback;
+import retrofit2.Response;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
@@ -47,6 +49,19 @@ public class RetrofitHelper {
         // 获得call对象
         Call<DouyuBean> bean = retrofitApi.getBean(hashMap);
         bean.enqueue(callback); // 异步开启Retrofit
+    }
+
+    public DouyuBean getBean(HashMap<String,String> hashMap){
+        // 获得call对象
+        Call<DouyuBean> bean = retrofitApi.getBean(hashMap);
+        try {
+            Response<DouyuBean> beanResponse = bean.execute();
+            DouyuBean douyuBean = beanResponse.body();
+            return douyuBean;
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return null;
     }
 
 
